@@ -25,8 +25,8 @@ const BelowFooter = () => {
         {/* Basic Visible Footer Content */}
             <section className={`px-4 py-3 fixed w-full bottom-0 bg-white transition-opacity duration-300 ${isFixedFooterVisible ? 'opacity-100' : 'opacity-0'}`}>
                 <div className="container-fluid">
-                    <div className="grid lg:grid-cols-2 gap-3 items-center">
-                    <ul className="flex items-center flex-wrap text-xs text-gray-500 font-bold">
+                    <div className="grid lg:grid-cols-2 gap-3 p items-center">
+                    <ul className="flex p items-center flex-wrap m text-xs text-gray-500 font-bold">
                             <li className="mx-1 hover:text-blue-500 cursor-pointer"><a>More Behance</a></li>
                             <li className="mx-1 hover:text-blue-500 cursor-pointer"><a>English</a></li>
                             <li className="mx-1 hover:text-blue-500 cursor-pointer"><a>Try Behance Pro</a></li>
@@ -38,7 +38,7 @@ const BelowFooter = () => {
                             <li className="mx-2 hover:text-blue-500 cursor-pointer"><a href='https://www.adobe.com/privacy/us-rights.html'>Do not sell or share my personal information</a></li>
                         </ul>
                         <div className="adobe-right flex lg:justify-end">
-                            <div className="adobe-btn mx-4 flex items-center hover:opacity-70">
+                            <div className="adobe-btn mx-4 flex m items-center hover:opacity-70">
                                 <img src={adobeLogo} alt="Adobe Logo" className="w-5 h-5" />
                                 <a href="" className='pl-1 font-bold text-black text-sm'> Adobe</a>
                             </div>
