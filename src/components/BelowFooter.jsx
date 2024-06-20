@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { adobeLogo } from '../Data';
+import React, { useEffect, useState } from 'react'; //Use of Hooks
+import { adobeLogo } from '../Data'; //Logo images are Imported by creating a data file for it else it can be done by saving the images to public and then rendering it.
 
 const BelowFooter = () => {
     const [isFixedFooterVisible, setIsFixedFooterVisible] = useState(true);
 
     useEffect(() => {
-        const handleScroll = () => {
+        const handleScroll = () => { //Looks for Scroll Position
             const footerElement = document.getElementById('main-footer');
             if (footerElement) {
                 const footerRect = footerElement.getBoundingClientRect();
@@ -13,7 +13,7 @@ const BelowFooter = () => {
                 setIsFixedFooterVisible(!isFooterVisible);
             }
         };
-
+        // Event added
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -21,7 +21,8 @@ const BelowFooter = () => {
     }, []);
 
     return (
-        <>
+        <> 
+        {/* Basic Visible Footer Content */}
             <section className={`px-4 py-3 fixed w-full bottom-0 bg-white transition-opacity duration-300 ${isFixedFooterVisible ? 'opacity-100' : 'opacity-0'}`}>
                 <div className="container-fluid">
                     <div className="grid lg:grid-cols-2 gap-3 items-center">
@@ -54,7 +55,8 @@ const BelowFooter = () => {
           </div>
           <div className="w-full lg:w-1/5 mb-6 lg:mb-0">
             <h6 className="font-semibold mb-4">Built For Creatives</h6>
-            <ul>
+            {/* List Of features to be Displayed in the Lower Footer */}
+            <ul>   
               <li className="mb-2"><a href="http://" className="hover:underline" target="_blank" rel="noopener noreferrer">Try Behance Pro</a></li>
               <li className="mb-2"><a href="http://" className="hover:underline" target="_blank" rel="noopener noreferrer">Find Inspiration</a></li>
               <li className="mb-2"><a href="http://" className="hover:underline" target="_blank" rel="noopener noreferrer">Get Hired</a></li>

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+// Use of Different React Icons.
 import { IoSearchSharp, IoClose } from 'react-icons/io5';
 import { MdArrowDropDown, MdImageSearch } from 'react-icons/md';
 import { CgMenuLeft } from 'react-icons/cg';
 import { IoIosMenu, IoIosArrowDown } from 'react-icons/io';
 import { FaBell } from 'react-icons/fa';
-import { behance_logo, adobeLogo } from '../Data';
+import { behance_logo, adobeLogo } from '../Data'; // Importing Data file to access the image links stored.
 
+// Drop Down function
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('Recommended'); 
@@ -32,8 +34,12 @@ const Header = () => {
   const closeMenu = () => {
     toggleMenu(); 
   };
+  // To toggle the Explore Dropdown menu.
+  const toggleExploreDropdown = () => {
+    setIsExploreDropdownOpen(!isExploreDropdownOpen);
+  };
 
-  
+  // Function to Check Suggestions in the Search.
   const handleChange = (e) => {
     const value = e.target.value;
     setQuery(value);
@@ -44,14 +50,14 @@ const Header = () => {
       setSuggestions([]);
     }
   };
-
+  // Some Random suggestions to be fetched through API.
   const getMockSuggestions = (value) => {
     const suggestions = [
-      `${value} design`,
-      `${value} art`,
+      `${value} asthetic`,
       `${value} photography`,
-      `creative ${value}`,
-      `digital ${value}`,
+      `${value} crative`,
+      `Architecture ${value}`,
+      `banner ${value}`,
     ];
     return suggestions;
   };
@@ -63,9 +69,9 @@ const Header = () => {
 
   
   return (
-    
+    // Display Content Of Header.
     <header className="header" id="header">
-      <div id="menu" className="menu duration-300 bg-white lg:hidden shadow-lg w-[70%] h-[100%] fixed left-0 top-0 z-20 p-5">
+      <div id="menu" className="menu duration-300  bg-white lg:hidden shadow-lg w-[70%] h-[100%] fixed left-0 top-0 z-20 p-5">
         <div className="text-3xl absolute right-3 cursor-pointer text-[#333]" onClick={closeMenu}>
           <IoClose />
         </div>
@@ -79,65 +85,69 @@ const Header = () => {
                 <div className="phone-menu pr-3 text-2xl cursor-pointer block lg:hidden" onClick={toggleMenu}>
                   <CgMenuLeft />
                 </div>
+                <a href="/" target="_blank" rel="noopener noreferrer">
                 <img src={behance_logo} alt="Behance Logo" className="w-auto h-4" />
+                </a>
+                
                 <div className="page-links lg:ml-3 relative">
-                  <ul className="flex items-center" onClick={() => setIsExploreDropdownOpen(true)}>
-                    <li className="mx-3 font-medium text-md flex items-center cursor-pointer">
-                      Explore
-                      <IoIosArrowDown className="ml-1" />
-                    </li>
-                    <li className="mx-3 font-medium text-md">
-                      <a href="/" target="_blank" rel="noopener noreferrer">Assets</a>
-                    </li>
-                    <li className="mx-3 font-medium text-md">
-                      <a href="/" target="_blank" rel="noopener noreferrer">Jobs</a>
-                    </li>
-                    <li className="mx-3 font-medium text-md flex items-center">
-                      <a href="/" target="_blank" rel="noopener noreferrer">Behance</a>
-                      <span className="ml-2 bg-blue-600 text-white px-1 py-0.5 rounded-full text-xs font-bold">PRO</span>
-                    </li>
-                    <span className="text-gray-300">|</span>
-                    <li className="mx-5 font-medium text-md flex items-center">
-                      Hire Freelancers
-                      <IoIosArrowDown className="ml-1" />
-                    </li>
-                  </ul>
-                  {isExploreDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md py-2 w-52">
-                      <ul>
-                        <li className="px-4 py-2 text-blue-600 font-bold ">
-                          <a href="/">Search & Explore</a>
-                        </li>
-                        <li className="px-4 py-2 hover:text-blue-600 font-bold">
-                          <a href="/">Curated Galleries</a>
-                        </li>
-                        <hr />
-                        <li className="px-4 py-2 hover:text-blue-600 text-sm text-gray-600">
-                          <a href="/">Best of Behance</a>
-                        </li>
-                        <li className="px-4 py-2 hover:text-blue-600 text-sm text-gray-600">
-                          <a href="/">Graphic Design</a>
-                        </li>
-                        <li className="px-4 py-2 hover:text-blue-600 text-sm text-gray-600">
-                          <a href="/">Illustration</a>
-                        </li>
-                        <li className="px-4 py-2 hover:text-blue-600 text-sm text-gray-600">
-                          <a href="/">Photography</a>
-                        </li>
-                        <li className="px-4 py-2 hover:text-blue-600 text-sm text-gray-600">
-                          <a href="/">UI/UX</a>
-                        </li>
-                        <li className="px-4 py-2 hover:text-blue-600 text-sm text-gray-600">
-                          <a href="/">3D Art</a>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </div>
+      <ul className="flex items-center">
+        <li
+          className="mx-3 font-medium text-md flex items-center cursor-pointer"
+          onClick={toggleExploreDropdown}
+        >
+          Explore
+          <IoIosArrowDown className="ml-1" />
+        </li>
+        <li className="mx-3 font-medium text-md">
+          <a href="/" target="_blank" rel="noopener noreferrer">Assets</a>
+        </li>
+        <li className="mx-3 font-medium text-md">
+          <a href="/" target="_blank" rel="noopener noreferrer">Jobs</a>
+        </li>
+        <li className="mx-3 font-medium text-md flex items-center">
+          <a href="/" target="_blank" rel="noopener noreferrer">Behance</a>
+          <span className="ml-2 bg-blue-600 text-white px-1 py-0.5 rounded-full text-xs font-bold">PRO</span>
+        </li>
+        <span className="text-gray-300">|</span>
+        <li className="mx-5 font-medium text-md flex items-center cursor-pointer">
+          Hire Freelancers
+          <IoIosArrowDown className="ml-1" />
+        </li>
+      </ul>
+      {isExploreDropdownOpen && (
+        <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md py-2 w-52">
+          <ul>
+            <li className="px-4 py-2 text-orange-600 font-bold">
+              <a href="/">Search & Explore</a>
+            </li>
+          
+            <hr />
+            <li className="px-4 py-4 hover:text-blue-600 text-sm text-black">
+              <a href="/">Best of Behance</a>
+            </li>
+            <li className="px-4 py-2 hover:text-blue-600 text-sm text-black">
+              <a href="/">Graphic Design</a>
+            </li>
+            <li className="px-4 py-2 hover:text-blue-600 text-sm text-black">
+              <a href="/">Illustration</a>
+            </li>
+            <li className="px-4 py-2 hover:text-blue-600 text-sm text-black">
+              <a href="/">Photography</a>
+            </li>
+            <li className="px-4 py-2 hover:text-blue-600 text-sm text-black">
+              <a href="/">UI/UX</a>
+            </li>
+            <li className="px-4 py-2 hover:text-blue-600 text-sm text-black">
+              <a href="/">3D Art</a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </div>
               </div>
               <div className="hidden lg:block">
                 <div className="action-area flex items-center">
-                  <FaBell className='mr-2' />
+                  <FaBell className='mr-2 cursor-pointer' />
                   <div className="login-btn rounded-full border px-4 py-1 border-[#dee8ff]">
                     <a href="/" className="text-[#0057ff] font-medium text-md">LogIn</a>
                   </div>
@@ -150,7 +160,7 @@ const Header = () => {
                       <img src={adobeLogo} alt="Adobe Logo" className="w-5 h-5" />
                       <a href="/" className="pl-1 font-bold text-black text-sm"> Adobe</a>
                     </div>
-                    <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-md p-4 mt-2 w-72 z-20 left-0">
+                    <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-md p-4 mt-2 w-100 z-20 left-0">
                       <div className="dropdown-item py-2">
                         <a href="https://adobe.com" className="block font-bold text-black">Go to adobe.com</a>
                         <p className="text-sm text-gray-500">Access your apps, services, files, and more</p>
@@ -188,11 +198,12 @@ const Header = () => {
                 <input
                   type="text"
                   placeholder="Search the creative world at work"
-                  className="bg-transparent outline-none w-[90%] lg:w-full truncate pl-16 text-md lg:text-xl font-bold text-[#222] custom-placeholder"
+                  className="bg-transparent outline-none w-[90%] lg:w-full truncate pl-16 text-md lg:text-xl  text-[#010101] custom-placeholder"
                   value={query}
                   onChange={handleChange}
                 />
                 <div className="search-icon text-2xl text-[#777] absolute top-[2px] left-4">
+                  {/* Search Bar Content */}
                   <IoSearchSharp />
                 </div>
                 </div>
@@ -223,6 +234,7 @@ const Header = () => {
                 </ul>
               </div>
             </div>
+            {/* Sorting Content */}
             <div className="relative ml-4 border rounded-lg p-2 hover:border-black cursor-pointer" onClick={toggleDropdown}>
               <span className="text-xs font-bold text-[#626161]">Sort</span>
               <div className="flex items-center">
@@ -244,26 +256,26 @@ const Header = () => {
                     Curated
                   </div>
                   <div
-                    className={`dropdown-item px-2 py-1 cursor-pointer ${selectedOption === 'Most Appreciated' ? 'font-bold text-blue-500' : 'text-black'} hover:text-blue-500`}
-                    onClick={() => handleOptionClick('Most Appreciated')}
+                    className={`dropdown-item px-2 py-1 cursor-pointer ${selectedOption === 'Appreciated' ? 'font-bold text-blue-500' : 'text-black'} hover:text-blue-500`}
+                    onClick={() => handleOptionClick('Appreciated')}
                   >
                     Most Appreciated
                   </div>
                   <div
-                    className={`dropdown-item px-2 py-1 cursor-pointer ${selectedOption === 'Most Viewed' ? 'font-bold text-blue-500' : 'text-black'} hover:text-blue-500`}
-                    onClick={() => handleOptionClick('Most Viewed')}
+                    className={`dropdown-item px-2 py-1 cursor-pointer ${selectedOption === 'Viewed' ? 'font-bold text-blue-500' : 'text-black'} hover:text-blue-500`}
+                    onClick={() => handleOptionClick('Viewed')}
                   >
                     Most Viewed
                   </div>
                   <div
-                    className={`dropdown-item px-2 py-1 cursor-pointer ${selectedOption === 'Most Discussed' ? 'font-bold text-blue-500' : 'text-black'} hover:text-blue-500`}
-                    onClick={() => handleOptionClick('Most Discussed')}
+                    className={`dropdown-item px-2 py-1 cursor-pointer ${selectedOption === 'Discussed' ? 'font-bold text-blue-500' : 'text-black'} hover:text-blue-500`}
+                    onClick={() => handleOptionClick('Discussed')}
                   >
                     Most Discussed
                   </div>
                   <div
-                    className={`dropdown-item px-2 py-1 cursor-pointer ${selectedOption === 'Most Recent' ? 'font-bold text-blue-500' : 'text-black'} hover:text-blue-500`}
-                    onClick={() => handleOptionClick('Most Recent')}
+                    className={`dropdown-item px-2 py-1 cursor-pointer ${selectedOption === 'Recent' ? 'font-bold text-blue-500' : 'text-black'} hover:text-blue-500`}
+                    onClick={() => handleOptionClick('Recent')}
                   >
                     Most Recent
                   </div>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { CiHeart } from "react-icons/ci";
+import { CiHeart } from "react-icons/ci"; // React icon for like Icon.
 
-const Modal = ({ isOpen, onClose, imageSrc, onLike, isLiked, title, description }) => {
+const Model = ({ isOpen, onClose, imageSrc, onLike, isLiked, title, description }) => {
   if (!isOpen) return null;
 
   return (
@@ -58,4 +58,4 @@ const Modal = ({ isOpen, onClose, imageSrc, onLike, isLiked, title, description 
   );
 };
 
-export default Modal;
+export default Model;
